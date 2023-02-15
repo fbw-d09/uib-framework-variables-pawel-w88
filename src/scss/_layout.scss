@@ -1,4 +1,15 @@
+@use "./variables" as *;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   a {
     color: $primary-color;
   }
@@ -6,15 +17,24 @@ nav {
 
 header {
   height: $huge;
-  background-image: url('../../images/header.jpg');
+  background-image: url("../../images/header.jpg");
   background-size: cover;
   text-align: center;
 }
 
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
 .card {
-  background-color: $border-color;
-  border: $border-size solid $border-color;
+  background-color: $secondary-color;
+  border: $border-size solid $secondary-color;
   border-radius: 5px;
+  padding: 1em;
 
   .img {
     background-size: cover;
@@ -25,56 +45,84 @@ header {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 3em;
   aside {
-    border: $border-size solid $border-color;
+    border: $border-size solid $secondary-color;
+    padding: 1em;
+  }
+  article {
+    padding: 0.5em;
   }
 }
 
 footer {
   background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    list-style-type: none;
+    padding: 5px 20px;
+  }
   a {
     color: white;
+    align-self: center;
   }
 }
 
-// @media screen and (min-width: $tablet) {
-//   .card {
-//     flex-flow: row nowrap;
-//     align-items: flex-start;
-//     width: 80%;
-//     margin: 0.5rem;
-//     &-text {
-//       padding: 0 $tiny $tiny $tiny;
-//     }
-//   }
+@media screen and (min-width: $tablet) {
+  .card {
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+  }
 
-//   nav {
-//     ul {
-//       justify-content: flex-end;
-//     }
-//   }
+  .card-img-top {
+    height: 10em;
+    width: 10em;
+  }
 
-//   main {
-//     flex-flow: row;
-//     aside {
-//       width: 25%;
-//     }
-//     article {
-//       width: 50%;
-//     }
-//   }
-// }
+  nav {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-// @media screen and (min-width: $desktop) {
-//   .cards {
-//     flex-direction: row;
-//     justify-content: center;
-//     text-align: center;
-//   }
-//   .card {
-//     flex-basis: 1;
-//     .img {
-//       width: 44%;
-//     }
-//   }
-// }
+  main {
+    flex-flow: row;
+    padding: 0;
+    margin: 5px;
+    aside {
+      width: 25%;
+      padding: 0 10px;
+    }
+    article {
+      width: 50%;
+      padding: 0 1em;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    margin: 1em 5em;
+  }
+  .card {
+    flex-basis: 1;
+    max-width: 48%;
+    .img {
+      width: 50%;
+    }
+  }
+  .cards div:last-child {
+    margin: 0 auto;
+    align-self: center;
+  }
+
+}
